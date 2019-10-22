@@ -14,7 +14,7 @@ class Result extends Component {
     if (!this.props.notifier.success) return <div></div>;
     return (
       <div className="container">
-        <h3>Response result:</h3>
+        <h3>Mail sent to recipients with message:</h3>
         <br />
         {this.props.notifier.content}
       </div>

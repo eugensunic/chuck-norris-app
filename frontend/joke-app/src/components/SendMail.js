@@ -37,11 +37,12 @@ class SendMail extends Component {
       method: "POST",
       body: JSON.stringify(this.props.mails)
     })
-      .then(x => {
-        console.log("success", x);
-        if (x.status !== 200) throw new Error("");
-        this.props.sendSuccessNotification(x);
+      .then(res => {
+        console.log("success", res);
+        if (res.status !== 200) throw new Error("");
+        return res.json();
       })
+      .then(x => this.props.sendSuccessNotification(x.value))
       .catch(err => {
         console.log("Error", err);
         this.props.sendFailedNotification(null);

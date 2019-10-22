@@ -1,20 +1,35 @@
-const utils = require("./utils/mail");
+const utils = require("../utils/mail");
 const rp = require("request-promise");
 
+const SERVICE_NAME = "gmail";
+const SUBJECT = "Chuck Norris joke";
+let RECIPIENT = "";
+let MESSAGE_CONTENT = "";
+
 module.exports.init = app => {
-  app
-    .route("/api/joke")
-    .get((req, res) => {})
-    .post((req, res, next) => {
-      fetchRandomJoke()
-        .then(x => {
-          if (!x || x.type !== "success") throw new Error("No content present");
-          console.log("joke message:", x.value);
-          return utils.sendMail("param1", "param2", "param3", "param4");
-        })
-        .then(x => res.json("Mail joke has been sent to your address"))
-        .catch(err => console.log("Error ocurred while fetching jokes", err));
-    });
+  app.route("/api/joke").post((req, res) => {
+    fetchRandomJoke()
+      .then(obj => {
+        if (!obj || obj.type !== "success")
+          throw new Error("No content present");
+
+        RECIPIENT = req.body.join(",");
+        MESSAGE_CONTENT = obj.value.joke;
+
+        return utils.sendMail(
+          SERVICE_NAME,
+          RECIPIENT,
+          SUBJECT,
+          MESSAGE_CONTENT,
+          () =>
+            res.json({
+              success: true,
+              value: MESSAGE_CONTENT
+            })
+        );
+      })
+      .catch(err => console.log("Error ocurred: ", err));
+  });
 };
 
 function fetchRandomJoke() {

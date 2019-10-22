@@ -3,16 +3,22 @@
 
 const nodemailer = require("nodemailer");
 
-function sendMail(serviceName, senderMail, subjectName, contentText) {
+function sendMail(
+  serviceName,
+  recipientMail,
+  subjectName,
+  contentText,
+  callback
+) {
   const message = {
     from: serviceName,
-    to: senderMail,
+    to: recipientMail,
     subject: subjectName,
     text: contentText
   };
 
   let transport = nodemailer.createTransport({
-    service: "gmail",
+    service: serviceName,
     auth: {
       user: "eugen.sunic@comsysto.com",
       pass: "mili7788"
@@ -24,7 +30,8 @@ function sendMail(serviceName, senderMail, subjectName, contentText) {
       console.log("Error ocurred:", err);
       return;
     }
-    return Promise.resolve();
+    console.log("Mail sent", info);
+    callback();
   });
 }
 

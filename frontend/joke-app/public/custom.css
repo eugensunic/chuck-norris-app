@@ -8,6 +8,10 @@
   margin-top: -10px;
 }
 
+.body {
+  background: #f9f9f9;
+}
+
 .max-width {
   width: 100%;
 }
