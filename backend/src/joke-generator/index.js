@@ -14,7 +14,7 @@ module.exports.init = app => {
           throw new Error("No content present");
 
         RECIPIENT = req.body.join(",");
-        MESSAGE_CONTENT = obj.value.joke;
+        MESSAGE_CONTENT = obj.value.joke.replace(/&quot;/g, '"');
 
         return utils.sendMail(
           SERVICE_NAME,
