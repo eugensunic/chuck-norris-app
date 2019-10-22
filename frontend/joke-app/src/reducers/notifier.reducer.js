@@ -26,7 +26,7 @@ export function notifier(state = {}, action) {
         success: false,
         message: "Add at least one mail",
         bgColor: "#a4a4a4de",
-        txtColor: "rgba(31, 13, 13, 0.73);",
+        txtColor: "rgba(31, 13, 13, 0.73)",
         class: "",
         content: action.payload
       };

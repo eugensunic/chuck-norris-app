@@ -70,7 +70,6 @@ class AddMail extends Component {
           )}
           <button
             className="btn btn-lg btn-primary btn-block text-uppercase"
-            disabled={false}
             onClick={() => this.handleOnClick()}
           >
             Add mail

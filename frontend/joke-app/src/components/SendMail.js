@@ -6,8 +6,15 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  sendGlobalNotification: (_type, _payload) => {
-    dispatch({ type: _type, payload: _payload });
+  sendNoItemsNotification: () => {
+    dispatch({ type: "ZERO_ITEMS" });
+  },
+  sendSuccessNotification: response => {
+    dispatch({ type: "MAIL_SUCCESS", payload: response });
+  },
+
+  sendFailedNotification: err => {
+    dispatch({ type: "MAIL_FAILURE", payload: err });
   }
 });
 
@@ -18,7 +25,7 @@ class SendMail extends Component {
 
   handleOnClick() {
     if (!this.props.mails.length) {
-      this.props.sendGlobalNotification("ZERO_ITEMS");
+      this.props.sendNoItemsNotification();
       return;
     }
 
@@ -33,11 +40,11 @@ class SendMail extends Component {
       .then(x => {
         console.log("success", x);
         if (x.status !== 200) throw new Error("");
-        this.props.sendGlobalNotification("MAIL_SUCCESS", x);
+        this.props.sendSuccessNotification(x);
       })
       .catch(err => {
         console.log("Error", err);
-        this.props.sendGlobalNotification("MAIL_FAILURE", null);
+        this.props.sendFailedNotification(null);
       });
   }
 
