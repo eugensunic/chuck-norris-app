@@ -3,8 +3,8 @@ const rp = require("request-promise");
 
 const SERVICE_NAME = "gmail";
 const SUBJECT = "Chuck Norris joke";
-let RECIPIENT = "";
-let MESSAGE_CONTENT = "";
+let RECIPIENT = null;
+let MESSAGE_CONTENT = null;
 
 module.exports.init = app => {
   app.route("/api/joke").post((req, res) => {
