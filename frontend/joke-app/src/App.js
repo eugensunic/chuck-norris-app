@@ -1,26 +1,52 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import { connect } from "react-redux";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import AddMail from "./components/AddMail";
+import MailList from "./components/MailList";
+import Footer from "./components/Footer";
+import SendMail from "./components/SendMail";
+import Navbar from "./components/Navbar";
+import Notifier from "./components/Notifier";
+import Result from "./components/Result";
+
+const mapStateToProps = state => ({
+  notifier: state.notifier
+});
+
+class App extends Component {
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
+    return (
+      <div>
+        <Navbar />
+        <Notifier
+          message={this.props.notifier.message}
+          bgColor={this.props.notifier.bgColor}
+          txtColor={this.props.notifier.txtColor}
+          class={this.props.notifier.class}
+        />
+        <div className="container">
+          <div className="row">
+            <div className="col-sm-6">
+              <AddMail />
+            </div>
+            <div className="col-sm-6">
+              <MailList />
+            </div>
+          </div>
+          <SendMail />
+        </div>
+        <Result />
+        <Footer />
+      </div>
+    );
+  }
 }
 
-export default App;
+export default connect(
+  mapStateToProps,
+  null
+)(App);
