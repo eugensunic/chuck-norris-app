@@ -1,6 +1,4 @@
-// const credentials = require("/Users/eugensunic/Desktop/chuck-norris-app/backend/node_modules/dotenv/types/index.ts").config()
-// .parsed;
-
+const credentials = require("dotenv").config().parsed;
 const nodemailer = require("nodemailer");
 
 function sendMail(
@@ -20,8 +18,8 @@ function sendMail(
   let transport = nodemailer.createTransport({
     service: serviceName,
     auth: {
-      user: "eugen.sunic@comsysto.com",
-      pass: "mili7788"
+      user: credentials.EMAIL,
+      pass: credentials.PASSWORD
     }
   });
 
