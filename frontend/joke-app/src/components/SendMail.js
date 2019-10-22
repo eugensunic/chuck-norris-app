@@ -38,13 +38,11 @@ class SendMail extends Component {
       body: JSON.stringify(this.props.mails)
     })
       .then(res => {
-        console.log("success", res);
         if (res.status !== 200) throw new Error("");
         return res.json();
       })
       .then(x => this.props.sendSuccessNotification(x.value))
       .catch(err => {
-        console.log("Error", err);
         this.props.sendFailedNotification(null);
       });
   }

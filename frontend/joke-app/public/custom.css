@@ -7,20 +7,19 @@
   color: #4e4d4d;
   margin-top: -10px;
 }
-
-.body {
-  background: #f9f9f9;
-}
-
-.max-width {
-  width: 100%;
-}
-
 #submit {
   height: 45px;
   font-weight: 600;
   width: 100%;
   margin: 25px 100px;
+}
+#mail {
+  height: 60px;
+  padding-top: 5px;
+}
+
+.body {
+  background: #f9f9f9;
 }
 
 .x-icon {
@@ -52,26 +51,6 @@
   background: #efce6b !important;
 }
 
-.protected-route {
-  color: #dc3545;
-}
-
-.protected-route:hover {
-  color: #a50716;
-}
-
-.unprotected-route {
-  color: #3444ff;
-}
-
-.unprotected-route:hover {
-  color: #3444ff;
-}
-
-#mail {
-  height: 60px;
-  padding-top: 5px;
-}
 
 .footer {
   width: 100%;
