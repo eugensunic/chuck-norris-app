@@ -1,13 +1,7 @@
 const credentials = require("dotenv").config().parsed;
 const nodemailer = require("nodemailer");
 
-function sendMail(
-  serviceName,
-  recipientMail,
-  subjectName,
-  contentText,
-  callback
-) {
+function sendMail(serviceName, recipientMail, subjectName, contentText) {
   const message = {
     from: serviceName,
     to: recipientMail,
@@ -23,13 +17,13 @@ function sendMail(
     }
   });
 
-  transport.sendMail(message, (err, info) => {
-    if (err) {
-      console.log("Error ocurred:", err);
-      return;
-    }
-    console.log("Mail sent", info);
-    callback();
+  return new Promise((resolve, reject) => {
+    transport.sendMail(message, err => {
+      if (err) {
+        reject();
+      }
+      resolve();
+    });
   });
 }
 

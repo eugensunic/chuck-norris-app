@@ -16,17 +16,14 @@ module.exports.init = app => {
         RECIPIENT = req.body.join(",");
         MESSAGE_CONTENT = obj.value.joke.replace(/&quot;/g, '"');
 
-        return utils.sendMail(
-          SERVICE_NAME,
-          RECIPIENT,
-          SUBJECT,
-          MESSAGE_CONTENT,
-          () =>
+        return utils
+          .sendMail(SERVICE_NAME, RECIPIENT, SUBJECT, MESSAGE_CONTENT)
+          .then(_ =>
             res.json({
               success: true,
               value: MESSAGE_CONTENT
             })
-        );
+          );
       })
       .catch(err => console.log("Error ocurred: ", err));
   });
