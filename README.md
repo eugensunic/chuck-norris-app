@@ -1,33 +1,33 @@
+# Chuck Norris app
+
+### App description
+
+App retrieves a joke from a predefined online joke list and sends it to the list of mails
+inserted from the user
+
 ### General info
-- install node.js if haven't already https://nodejs.org/en/download/ 
-- install git if haven't already then clone the app:
-  ```git clone https://github.com/eugensunic/chuck-norris-app.git```
-- start backend before running frontend
-- email and passwords are hidden and not display to public hence you will have to provide yours to send mails via your account
 
-### BACKEND
+- install [Node.js](https://nodejs.org/en/download/)
+- install [Git](https://git-scm.com/downloads)
+- clone the app:
+  `git clone https://github.com/eugensunic/chuck-norris-app.git`
+- email and passwords are hidden and not displayed to public hence you will have to provide yours to send mails via your account
 
-Inside chuck-norris-app folder do the following:
-
-1.) cd backend
-
-2.) npm install
-
-3.) npm run start --> should display app running on port 5000 in terminal
-
-4.) service starts at http://localhost:5000/ , you don't need to do anything with it.
-    Its usage is only to serve files for frontend queries.
-
-### FRONTEND
+### Backend
 
 Inside chuck-norris-app folder do the following:
 
-1.) cd frontend
+1. `cd backend`
+2. `npm install`
+3. `npm run start` --> should display: app running on port 5000 in terminal
+4. open your app on: http://localhost:5000/
 
-2.) cd joke-app
+### Frontend
 
-2.) npm install
+Inside chuck-norris-app folder do the following:
 
-3.) npm run start
-
-4.) Open your app: http://localhost:3000/
+1. `cd frontend`
+2. `cd joke-app`
+3. `npm install`
+4. `npm run start`
+5. open your app on: http://localhost:3000/
