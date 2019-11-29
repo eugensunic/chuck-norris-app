@@ -11,7 +11,9 @@ inserted from the user
 - install [Git](https://git-scm.com/downloads)
 - clone the app:
   `git clone https://github.com/eugensunic/chuck-norris-app.git`
-- email and passwords are hidden and not displayed to public hence you will have to provide yours to send mails via your account
+- email and password are hidden and not displayed to public hence you will have to provide yours to send mails via your account
+  see: ``/backend/src/utils/mail.js``
+
 
 ### Backend
 
